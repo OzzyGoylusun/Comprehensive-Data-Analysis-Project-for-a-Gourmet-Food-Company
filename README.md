@@ -19,7 +19,7 @@ This comprehensive data analysis project is designed to assist a gourmet food co
 In this respect, the data analysis comprises of seven (7) different exhaustive components, four of whose outcomes, described below, have been visualised by means of a Power BI dashboard with elegant design principles in mind:
 
 * Revenue Analysis
-* Sales Analysis
+* Order-Sales Analysis
 * Customer Analysis (with an RFM component)
 * Product-Price Analysis
 
