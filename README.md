@@ -43,13 +43,13 @@ Results of our data analysis hinge on corresponding SQL analysis derived from th
 
 ### Exploratory Data Analysis
 
-* EDA involved exploring the commercial data to answer some key questions, including but not limited to:
+EDA involved exploring the commercial data to answer some key questions, including but not limited to:
 
-1. What is the overall sales trend over these three years?
-2. What are the most preferred product categories leading up to/on/after special days (e.g., St. Valentines)?
-3. What is the favorite city of each customer when it comes to where they place their orders from?
-4. Who are the top 5 sellers who deliver orders to customers the fastest?
-5. Which product categories experienced payments made by installments the most?
+1. What are the top 10 highest-revenue countries and the top 10 countries with the highest-revenue-per-order up to date?
+2. Are there any seasonality
+3. 
+4. 
+5. 
 
 ### Data Analysis
 
