@@ -9,7 +9,7 @@
 
 ### Project Overview
 ---
-This comprehensive data analysis project is designed to assist a gourmet food company, named Northwind, with increasing its overall revenue by proposing a number of actions for consideration of the corporation. 
+This comprehensive data analysis project is designed to assist a gourmet food company, named Northwind, with increasing its overall revenue by proposing a number of actions for consideration of the corporation.
 
 <p align="center">
   <img src="https://github.com/OzzyGoylusun/PowerBI.Python.Northwindd/blob/main/Data%20Visuals/Logo.png"
