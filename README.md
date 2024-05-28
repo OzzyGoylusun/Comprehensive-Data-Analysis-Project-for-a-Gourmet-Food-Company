@@ -88,6 +88,7 @@ WITH FILTERED_SUPPLIER_AVERAGE_DELIVERY_SPEED_AND_ORDERS_PROCESSED AS
 ) 
 ...
 ```
+In the end, filtering out these suppliers as well resulted in a clearer dataset on which to conduct this statistical analysis in order to evaluate the supplier performance.
 
 ### Findings
 
