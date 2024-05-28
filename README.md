@@ -77,7 +77,7 @@ EDA involved exploring the order data to answer some key questions, including bu
 1. What are the top 10 highest-revenue countries and the top 10 countries with the highest-revenue-per-order up to date?
 2. Is there any seasonality observed when it comes to the company's monthly number of sales?
 3. How many percent of customers classified through an RFM analysis as **"Loyal Customers"** or **"Champions"** have overall received less discount than the average discount rate?
-4. How many percent of all suppliers have performed below par in terms of order processing speed where statistical significance exist?
+4. How many percent of all suppliers have performed below par in terms of order processing speed where statistical significance exists?
 5. Is there any opportunity cost surrounding the proper engagement of shippers to curtail the overall logistics expenses per top-performing country?
 
 ### Data Analysis
