@@ -1,0 +1,75 @@
+
+--2. Order-Sales Analysis
+
+
+--CASE 2.1.1: Are there any noticable sales trends over time - for instance on a monthly scale?
+
+SELECT TO_CHAR(ORDER_DATE,'YYYY-MM') AS MONTHLY_DATE,
+	COUNT(DISTINCT ORDER_ID) AS NUMBER_OF_ORDERS
+	
+FROM ORDERS
+GROUP BY 1 
+
+
+
+--CASE 2.1.2: Is it possible that there exist a certain type of seasonality for remarkable increases/decreases in number of orders being placed?
+
+SELECT TO_CHAR(ORDER_DATE,'MM') AS MONTH,
+	COUNT(DISTINCT ORDER_ID) AS NUMBER_OF_ORDERS_PER_MONTH
+	
+FROM ORDERS
+GROUP BY 1 
+
+
+
+--CASE 2.2: What is the breakdown of order numbers in terms of the days-of-the-week criteria?
+
+SELECT CASE WHEN EXTRACT(DOW FROM ORDER_DATE) = '0' THEN '7-Sunday'
+			WHEN EXTRACT(DOW FROM ORDER_DATE) = '1' THEN '1-Monday'
+			WHEN EXTRACT(DOW FROM ORDER_DATE) = '2' THEN '2-Tuesday'
+			WHEN EXTRACT(DOW FROM ORDER_DATE) = '3' THEN '3-Wednesday'
+			WHEN EXTRACT(DOW FROM ORDER_DATE) = '4' THEN '4-Thursday'
+			WHEN EXTRACT(DOW FROM ORDER_DATE) = '5' THEN '5-Friday'
+			ELSE '6-Saturday'
+			END AS DAY_OF_THE_WEEK,
+			
+	EXTRACT(YEAR FROM ORDER_DATE),
+	COUNT(DISTINCT ORDER_ID) AS TOTAL_SALES
+	
+FROM ORDERS
+GROUP BY 1, 2
+ORDER BY 1 
+
+
+
+--CASE 2.3: How does the number of orders look like per country and year?
+
+SELECT SHIP_COUNTRY,
+	EXTRACT(YEAR FROM ORDER_DATE),
+	COUNT(ORDER_ID)
+	
+FROM ORDERS
+GROUP BY 1, 2
+ORDER BY 3 DESC 
+
+
+
+--CASE 2.4: What is the breakdown of orders of each country per category and product?
+
+SELECT SHIP_COUNTRY,
+	EXTRACT(YEAR FROM ORDER_DATE) AS YEAR,
+	CATEGORY_NAME,
+	PRODUCT_NAME,
+	CASE WHEN DISCONTINUED = 1 THEN 'Discontinued'
+		 ELSE 'Ongoing'
+		 END AS PRODUCT_CONTINUITY_STATUS,
+		 
+	COUNT(PRODUCT_ID) AS NUMBER_OF_SALES
+	
+FROM ORDERS AS O
+LEFT JOIN ORDER_DETAILS AS OD USING(ORDER_ID)
+LEFT JOIN PRODUCTS AS P USING(PRODUCT_ID)
+LEFT JOIN CATEGORIES AS C USING(CATEGORY_ID)
+GROUP BY 1, 2, 3, 4, 5
+ORDER BY 6 DESC
+

@@ -1,0 +1,108 @@
+
+--1. Revenue Analysis
+
+
+--CASE 1.1: How do the following pieces of revenue-related information look like, also considering that potential stock needs are pressingly met 
+--and discontinued products are replaced with same-quality counterparts?
+
+-- * Pure Monthly Revenue
+-- * Discounted Monthly Revenue (i.e., meaning the revenue obtained after applying all the discount offered to customers)
+-- * Monthly Revenue inc. Freight Cost applied
+
+--Please note that the only product that has currently more demand than available supply is 'Chang', and this SQL code makes the presumption that
+--the remaining relevant orders are processed with an equivalent product at a similar price.
+
+WITH PURE_AND_DISCOUNTED_REVENUE AS
+	(
+		SELECT ORDER_ID, --Only to maintain the integrity of the entire sub-dataset
+ 			TO_CHAR(ORDER_DATE,'YYYY-MM') AS MONTHLY_DATE,
+			FREIGHT,
+			CAST(SUM(UNIT_PRICE * QUANTITY) AS NUMERIC(10, 2)) AS PURE_REVENUE_PER_ORDER,
+			CAST(SUM(CASE 
+					 WHEN DISCOUNT = 0 THEN UNIT_PRICE * QUANTITY
+					 ELSE UNIT_PRICE * QUANTITY * (1 - DISCOUNT) END) AS NUMERIC(10, 2)) AS DISCOUNTED_REVENUE_PER_ORDER
+		FROM ORDERS
+		LEFT JOIN ORDER_DETAILS USING(ORDER_ID)
+		GROUP BY 1, 2, 3
+		ORDER BY 1
+	)
+
+SELECT MONTHLY_DATE,
+		SUM(PURE_REVENUE_PER_ORDER) AS PURE_MONTHLY_REVENUE,
+		SUM(DISCOUNTED_REVENUE_PER_ORDER) AS DISCOUNTED_MONTHLY_REVENUE,
+		(SUM(DISCOUNTED_REVENUE_PER_ORDER) - SUM(FREIGHT))::NUMERIC(10, 2) AS MONTHLY_REVENUE_INC_FREIGHT --We calculate the freight cost at the end to avoid duplicate calculations
+		
+FROM PURE_AND_DISCOUNTED_REVENUE
+GROUP BY 1
+
+
+
+--CASE 1.2: Which countries have thus far brought in the most amount of profits?
+
+WITH COUNTRY_BASED_ORDER_AND_PROFIT_DETAILS AS
+	(
+		WITH COUNTRY_PROFIT_ANALYSIS AS
+			(
+				SELECT ORDER_ID, --Only to maintain the integrity of the entire sub-dataset
+					EXTRACT(YEAR FROM ORDER_DATE) AS YEAR,
+					SHIP_COUNTRY AS CUSTOMER_BASE_COUNTRY,
+					FREIGHT,
+					CAST(SUM(CASE
+							 WHEN DISCOUNT = 0 THEN UNIT_PRICE * QUANTITY
+							 ELSE UNIT_PRICE * QUANTITY * (1 - DISCOUNT) END) AS NUMERIC(10, 2)) AS DISCOUNTED_REVENUE_PER_ORDER
+				FROM ORDERS
+				LEFT JOIN ORDER_DETAILS USING(ORDER_ID)
+				GROUP BY 1, 2, 3, 4
+			) 
+		
+		SELECT YEAR,
+			CUSTOMER_BASE_COUNTRY AS COUNTRY,
+			COUNT(DISTINCT ORDER_ID)::NUMERIC(10, 2) AS NUMBER_OF_ORDERS_PROCESSED,
+			(SUM(DISCOUNTED_REVENUE_PER_ORDER) - SUM(FREIGHT))::NUMERIC(10, 2) AS YEARLY_REVENUE_INC_FREIGHT
+		
+		FROM COUNTRY_PROFIT_ANALYSIS
+		GROUP BY 1, 2
+		ORDER BY 4 DESC
+	)
+	
+SELECT YEAR,
+	COUNTRY,
+	NUMBER_OF_ORDERS_PROCESSED,
+	YEARLY_REVENUE_INC_FREIGHT,
+	(YEARLY_REVENUE_INC_FREIGHT / NUMBER_OF_ORDERS_PROCESSED)::NUMERIC(10, 2) AS AVERAGE_PROFIT_PER_ORDER_GENERATED
+	
+FROM COUNTRY_BASED_ORDER_AND_PROFIT_DETAILS
+		
+
+
+--CASE 1.3: Which categories and products have contributed to the bottom line most?
+
+WITH CONSOLIDATED_ORDER_DETAILS AS
+	(
+		SELECT ORDER_ID, --Only to maintain the integrity of the entire sub-dataset
+	 		EXTRACT(YEAR FROM ORDER_DATE) AS YEAR,
+			SHIP_COUNTRY AS CUSTOMER_BASE_COUNTRY,
+			CATEGORY_NAME,
+			PRODUCT_NAME,
+			(FREIGHT / COUNT(ORDER_ID) OVER(PARTITION BY ORDER_ID))::NUMERIC(10, 2) AS AVERAGE_ADJUSTED_FREIGHT,
+			CAST(SUM(CASE
+					 WHEN DISCOUNT = 0 THEN OD.UNIT_PRICE * OD.QUANTITY
+					 ELSE OD.UNIT_PRICE * OD.QUANTITY * (1 - OD.DISCOUNT) END) AS NUMERIC(10, 2)) AS DISCOUNTED_REVENUE_PER_ORDER
+		
+		FROM ORDERS
+		LEFT JOIN ORDER_DETAILS AS OD USING(ORDER_ID)
+		LEFT JOIN PRODUCTS USING(PRODUCT_ID)
+		LEFT JOIN CATEGORIES USING(CATEGORY_ID)
+		GROUP BY 1, 2, 3, 4, 5
+		ORDER BY 1
+	)
+	
+SELECT YEAR,
+	CUSTOMER_BASE_COUNTRY,
+	CATEGORY_NAME,
+	PRODUCT_NAME,
+	(SUM(DISCOUNTED_REVENUE_PER_ORDER) - SUM(AVERAGE_ADJUSTED_FREIGHT))::NUMERIC(10, 2) AS ADJUSTED_PROFIT_PER_PRODUCT
+	
+FROM CONSOLIDATED_ORDER_DETAILS
+GROUP BY 1, 2, 3, 4
+

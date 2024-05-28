@@ -1,0 +1,59 @@
+
+--7. Inventory Analysis
+
+
+--CASE 7: Conduct a thorough inventory management inspection to propose tailored recommendations depending upon the status of each product offered by suppliers.
+
+WITH INVENTORY_MANAGEMENT_RECOMMENDATION_ANALYSIS AS
+	(
+		SELECT PRODUCT_NAME,
+			(UNIT_IN_STOCK - UNIT_ON_ORDER) AS INVENTORY_IN_EXCESS_OR_REMAINING,
+			UNIT_IN_STOCK,
+			UNIT_ON_ORDER,
+			REORDER_LEVEL,
+			DISCONTINUED,
+			CASE
+							WHEN (UNIT_IN_STOCK > UNIT_ON_ORDER)
+												AND (UNIT_ON_ORDER >= 0)
+												AND (DISCONTINUED = 1) THEN 'Sell Existing Inventory and Update Inventory for Product Removal'
+		
+							WHEN (UNIT_IN_STOCK < UNIT_ON_ORDER)
+												AND (UNIT_IN_STOCK < REORDER_LEVEL)
+												AND (DISCONTINUED = 1) THEN 'Process Existing Orders and Replace with Immediate Equivalent'
+		
+							WHEN (UNIT_IN_STOCK = 0)
+												AND (UNIT_ON_ORDER = 0)
+												AND (REORDER_LEVEL = 0)
+												AND (DISCONTINUED = 1) THEN 'Remove Product out of Inventory Management System'
+		
+							WHEN (UNIT_IN_STOCK > UNIT_ON_ORDER)
+												AND (UNIT_IN_STOCK > REORDER_LEVEL +
+																		(SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY REORDER_LEVEL)
+																			FROM PRODUCTS)) --In here, we are also taking into account what can truly constitute an excess inventory by calculating the median value of the reorder level of the entire product inventory and adding that to the reorder level of a particular item
+												AND (DISCONTINUED = 0) THEN 'More Inventory Than Needed. Pause Replenishment For Now'
+		
+							WHEN (UNIT_IN_STOCK > UNIT_ON_ORDER)
+												AND (UNIT_ON_ORDER <> 0)
+												AND (UNIT_IN_STOCK <= REORDER_LEVEL +
+																		(SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY REORDER_LEVEL)
+																			FROM PRODUCTS))
+												AND (DISCONTINUED = 0) THEN 'Slightly Excess Inventory; Keep on Stock Replenishment For Now'
+		
+							WHEN (UNIT_IN_STOCK < UNIT_ON_ORDER)
+												AND (UNIT_IN_STOCK < REORDER_LEVEL)
+												AND (DISCONTINUED = 0) THEN 'Urgent Stock Replenishment Needed for Product'
+		
+							WHEN (UNIT_IN_STOCK > UNIT_ON_ORDER)
+												AND (UNIT_ON_ORDER = 0)
+												AND (DISCONTINUED = 0) THEN 'Pause Replenishment and Revisit Re-Order Level for Update'
+		
+							WHEN (UNIT_IN_STOCK = UNIT_ON_ORDER)
+												AND (UNIT_IN_STOCK > 0) THEN 'Stock Demand Just Met'
+		
+							ELSE 'NULL'
+							END AS INVENTORY_ACTION_TO_TAKE
+		FROM PRODUCTS AS P
+	)
+	
+SELECT *
+FROM INVENTORY_MANAGEMENT_RECOMMENDATION_ANALYSIS
