@@ -20,7 +20,7 @@ In this respect, the data analysis comprises of seven (7) different exhaustive c
 
 * Revenue Analysis
 * Order-Sales Analysis
-* Customer Analysis (with an RFM component)
+* Customer Analysis (*with an RFM component*)
 * Product-Price Analysis
 
 Below are some examples from the Power BI dashboard:
@@ -54,8 +54,8 @@ Below is an example from the Python Seaborn data visualisation notebook:
 
 Our data source hinges upon a SQL file, named **Northwind Project DB Query**, designed to populate a database with specific pre-determined information. 
 
-* For the Power BI dashboard, a connection to the localhost was established on Power BI to access the database with certain sql queries.
-* For the data visualisation on Python, the SQL Alchemy was utilised to establish a connection between the database and the Python environment.
+* For the **Power BI** dashboard, a connection to the localhost was established on Power BI to access the database with certain sql queries.
+* For the data visualisation on **Python**, the SQL Alchemy was utilised to establish a connection between the database and the Python environment.
 
 ### Tools
 
