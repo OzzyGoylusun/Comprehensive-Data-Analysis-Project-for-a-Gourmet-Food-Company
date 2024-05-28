@@ -88,10 +88,13 @@ WITH FILTERED_SUPPLIER_AVERAGE_DELIVERY_SPEED_AND_ORDERS_PROCESSED AS
 ) 
 ...
 ```
-In the end, filtering out these suppliers as well resulted in a clearer dataset on which to conduct this statistical analysis in order to evaluate the supplier performance.
+In the end, filtering out these suppliers as well resulted in a clearer dataset on which to conduct this statistical analysis in order to evaluate the supplier performance in an accurrate fashion.
 
 ### Findings
 
+The critical analysis results are summarised as follows:
+
+1. While the company has managed to 
 ### Recommendations
 
 ### Limitations
