@@ -11,10 +11,21 @@
 ---
 This comprehensive data analysis project is designed to assist a gourmet food company, named Northwind, with increasing its overall revenue by proposing a number of actions for consideration of the corporation. 
 
-In this respect, the data analysis comprises of seven (7) different components, namely -
+In this respect, the data analysis comprises of seven (7) different components, four of whose outcomes, described below, have been visualised by means of a Power BI dashboard with elegant design principles in mind.
 
 * Revenue Analysis
+* Sales Analysis
+* Customer Analysis (with an RFM component)
+* Product-Price Analysis
 
+The remaining three analysis, described below, have been visualised by a culmination of both Python Matplotlib and Seaborn libraries 
+
+* Supplier Analysis
+* Shipper Analysis
+* Inventory Optimisation Analysis
+
+
+****
 
 ### Data Sources
 
