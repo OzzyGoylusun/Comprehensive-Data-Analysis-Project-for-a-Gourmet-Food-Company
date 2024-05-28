@@ -1,5 +1,5 @@
 
-# Northwind Gourmet Food Company Comprehensive Data Analysis Project
+# Comprehensive Data Analysis Project for a Gourmet Food Company - Northwind
 
 ## Table of Contents
 
