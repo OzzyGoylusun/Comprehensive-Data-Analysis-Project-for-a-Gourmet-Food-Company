@@ -59,13 +59,13 @@ Our data source hinges upon a SQL file, named **Northwind Project DB Query**, de
 - PostgreSQL Server - Data Analysis
   - [Download Here](https://www.postgresql.org/download/)
 - Anaconda Navigator to access the Jupyter Notebook for **Python**
-  - [Download Here: ](https://www.anaconda.com/download)
+  - [Download Here](https://www.anaconda.com/download)
 - Power BI Desktop - Data Manipulation, Analysis and Visualisation
   - [Download here](https://www.microsoft.com/en-us/download/details.aspx?id=58494)
 
 ### Data Preparation
 
-No specific data preparation tasks were required to undertake, thanks to an overhaul reliance on the information stored in the database.
+No specific data preparation tasks were required to undertake, thanks to an extensive reliance on the information stored in the database in a clean fashion.
 
 ### Exploratory Data Analysis
 
