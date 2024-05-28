@@ -61,7 +61,7 @@ Our data source hinges upon a SQL file, named **Northwind Project DB Query**, de
 
 - PostgreSQL Server - Data Analysis
   - [Download Here](https://www.postgresql.org/download/)
-- Anaconda Navigator to access the Jupyter Notebook for **Python** - Data Access and 
+- Anaconda Navigator to access the Jupyter Notebook for **Python** - Data Access and Visualisation
   - [Download Here](https://www.anaconda.com/download)
 - Power BI Desktop - Data Manipulation, Analysis and Visualisation
   - [Download here](https://www.microsoft.com/en-us/download/details.aspx?id=58494)
