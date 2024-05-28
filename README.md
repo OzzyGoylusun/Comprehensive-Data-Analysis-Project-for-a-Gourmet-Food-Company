@@ -111,7 +111,7 @@ Based on the analysis above, I propose the following recommendations:
 
 ### Limitations
 
-As the dataset was based upon a static excel file, it is inherently deprived of any prospective data which can impact subsequent strategical and/or tactical decisions that the hotel conglomerate may choose to make.
+As the dataset was based upon a static SQL file, it is inherently deprived of any prospective data which can impact subsequent strategical and/or tactical decisions that the gourmet food company may choose to make.
 
 ### References
 
