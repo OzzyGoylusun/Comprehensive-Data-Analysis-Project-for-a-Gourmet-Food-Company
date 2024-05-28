@@ -54,11 +54,14 @@ Below is an example from the Python Seaborn data visualisation notebook:
 
 Our data source hinges upon a SQL file, named **Northwind Project DB Query**, designed to populate a database with specific pre-determined information. 
 
+* For the Power BI dashboard, a connection to the localhost was established on Power BI to access the database with certain sql queries.
+* For the data visualisation on Python, the SQL Alchemy was utilised to establish a connection between the database and the Python environment.
+
 ### Tools
 
 - PostgreSQL Server - Data Analysis
   - [Download Here](https://www.postgresql.org/download/)
-- Anaconda Navigator to access the Jupyter Notebook for **Python**
+- Anaconda Navigator to access the Jupyter Notebook for **Python** - Data Access and 
   - [Download Here](https://www.anaconda.com/download)
 - Power BI Desktop - Data Manipulation, Analysis and Visualisation
   - [Download here](https://www.microsoft.com/en-us/download/details.aspx?id=58494)
