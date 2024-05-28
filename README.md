@@ -58,14 +58,14 @@ In my humble opinion, while conducting the supplier analysis in order to gauge e
 ```sql
 ...
 WITH FILTER_FOR_IDENTIFICATION_OF_ORDERS_SUPPLIED_SINGLEHANDEDLY AS
-					(
-						SELECT ORDER_ID,
-							COUNT(ROW_COUNTER) AS A
-						
-						FROM SINGLE_MULTIPLE_SUPPLIED_ORDER_INFO
-						GROUP BY 1
-						HAVING (COUNT(ROW_COUNTER) = 1)--This assists with filtering out orders that have been processed by multiple suppliers, as it introduces complexity into suppliers' order processing performance analysis
- 					) 
+(
+	SELECT ORDER_ID,
+		COUNT(ROW_COUNTER)
+
+	FROM SINGLE_MULTIPLE_SUPPLIED_ORDER_INFO
+	GROUP BY 1
+	HAVING (COUNT(ROW_COUNTER) = 1)--This assists with filtering out orders that have been processed by multiple suppliers, as it introduces complexity into suppliers' order processing performance analysis
+) 
 ...
 ```
 Afterwards, there turned out to be some suppliers who did not process a significant number of orders. To achieve statistical significance, I also needed to filter out all the suppliers whose order numbers remained below par, based on the resulting dataset's median value.
@@ -77,15 +77,15 @@ WITH FILTERED_SUPPLIER_AVERAGE_DELIVERY_SPEED_AND_ORDERS_PROCESSED AS
 	(
       ...
       SELECT SUPPLIER_NAME,
-			SUPPLIER_COUNTRY,
-			AVERAGE_PROCESSING_SPEED_IN_DAYS,
-			NUMBER_OF_ORDERS_PROCESSED,
-			CASE WHEN (SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY NUMBER_OF_ORDERS_PROCESSED)
-						FROM SUPPLIER_AVERAGE_DELIVERY_SPEED_AND_ORDERS_PROCESSED)::NUMERIC(10,2) > NUMBER_OF_ORDERS_PROCESSED THEN 'Statistically Insignificant'
-				   ELSE 'Statistically Significant'
-				   END AS STATISTICAL_IMPORTANCE
-		
-		FROM SUPPLIER_AVERAGE_DELIVERY_SPEED_AND_ORDERS_PROCESSED --We are only taking into account the suppliers that have processed a 'significant' number of orders
+		SUPPLIER_COUNTRY,
+		AVERAGE_PROCESSING_SPEED_IN_DAYS,
+		NUMBER_OF_ORDERS_PROCESSED,
+		CASE WHEN (SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY NUMBER_OF_ORDERS_PROCESSED)
+ 			   FROM SUPPLIER_AVERAGE_DELIVERY_SPEED_AND_ORDERS_PROCESSED)::NUMERIC(10,2) > NUMBER_OF_ORDERS_PROCESSED THEN 'Statistically Insignificant'
+                     ELSE 'Statistically Significant'
+		     END AS STATISTICAL_IMPORTANCE
+
+      FROM SUPPLIER_AVERAGE_DELIVERY_SPEED_AND_ORDERS_PROCESSED --We are only taking into account the suppliers that have processed a 'significant' number of orders
 ) 
 ...
 ```
