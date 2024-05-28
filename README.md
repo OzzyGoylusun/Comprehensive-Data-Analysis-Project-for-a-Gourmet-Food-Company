@@ -47,7 +47,7 @@ EDA involved exploring the commercial data to answer some key questions, includi
 
 1. What are the top 10 highest-revenue countries and the top 10 countries with the highest-revenue-per-order up to date?
 2. Is there any seasonality observed when it comes to the company's monthly number of sales?
-3. How many customers classified through an RFM analysis as **"Loyal Customers"** or **"Champions"** have overall received less discount than the average discount rate?
+3. How many percent of customers classified through an RFM analysis as **"Loyal Customers"** or **"Champions"** have overall received less discount than the average discount rate?
 4. How many percent of all suppliers have performed below par in terms of order processing speed where statistical significance exist?
 5. Is there any opportunity cost surrounding the proper engagement of shippers to curtail the overall logistics expenses per top-performing country?
 
@@ -71,7 +71,6 @@ WITH FILTER_FOR_IDENTIFICATION_OF_ORDERS_SUPPLIED_SINGLEHANDEDLY AS
 Afterwards, there turned out to be some suppliers who did not process a significant number of orders. To achieve statistical significance, I also needed to filter out all the suppliers whose order numbers remained below par, based on the resulting dataset's median value.
 
 ```sql
-
 WITH FILTERED_SUPPLIER_AVERAGE_DELIVERY_SPEED_AND_ORDERS_PROCESSED AS
 	(
       ...
@@ -94,10 +93,21 @@ In the end, filtering out these suppliers as well resulted in a clearer dataset 
 
 The critical analysis results are summarised as follows:
 
-1. While **the US, Germany, Brazil and France** are among the top highest-revenue generating countries for the company, **Austria, Ireland
-
+1. While **the US, Germany, Brazil and France** are among the top highest-revenue generating countries, **Austria, Ireland and Belgium** turn out to generate the most revenue per order placed for the company.
+2. There appears to be seasonality where the company experiences a significant drop in total sales during the months **May and June**.
+3. A whopping **~43% of all customers RFM-classified as 'Loyal Customers' or 'Champions'** have been awarded below-the-par average discount rate, which is 7%.
+4. Only **~39% of all suppliers**, where there exist statistical significance, have managed to process orders at a faster pace than the average processing day, which hovers around 8.32 days.
+5. There are notable variances in logistics companies' fees even within the same country, for example in **Belgium**.
 
 ### Recommendations
+
+Based on the analysis above, I propose the following recommendations:
+
+* XXX
+* XXX
+* XXX
+* XXX
+* XXX
 
 ### Limitations
 
