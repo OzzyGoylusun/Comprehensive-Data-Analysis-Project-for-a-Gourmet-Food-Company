@@ -123,7 +123,7 @@ In the end, filtering out these suppliers as well resulted in a clearer dataset 
 The critical analysis results are summarised as follows:
 
 1. While **the US, Germany, Brazil and France** are among the top highest-revenue generating countries, **Austria, Ireland and Belgium** turn out to generate the most revenue per order placed for the company.
-2. There appears to be seasonality where the company experiences a significant drop in total sales during the months **May and June**.
+2. There appears to be seasonality where the company experiences a significant drop in total sales during the months - **May and June**.
 3. A whopping **~43% of all customers RFM-classified as 'Loyal Customers' or 'Champions'** have been awarded below-the-par average discount rate, which is 7%.
 4. Only **~39% of all suppliers**, where there exist statistical significance, have managed to process orders at a faster pace than the average processing day, which hovers around 8.32 days.
 5. There are notable variances in logistics companies' fees even within the same country, for example in **Belgium**.
