@@ -52,7 +52,7 @@ Below is an example from the Python Seaborn data visualisation notebook:
 
 ### Data Sources
 
-Results of our data analysis hinge on corresponding SQL analysis derived from the Northwind databased populated with the file, **Northwind Project DB Query**
+The results of our data analysis hinge on diverse corresponding SQL analysis which was derived from the Northwind's database whose data had been populated with the file, **Northwind Project DB Query**
 
 ### Tools
 
