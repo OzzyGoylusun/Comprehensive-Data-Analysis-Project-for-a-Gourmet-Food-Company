@@ -52,7 +52,7 @@ Below is an example from the Python Seaborn data visualisation notebook:
 
 ### Data Sources
 
-Our data source hinge upon a SQL file, named **Northwind Project DB Query**, designed to populate an entire database with all pre-determined information. 
+Our data source hinges upon a SQL file, named **Northwind Project DB Query**, designed to populate a database with specific pre-determined information. 
 
 ### Tools
 
