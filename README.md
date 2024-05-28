@@ -1,5 +1,5 @@
 
-# Comprehensive Sales Analysis Dashboard for a Luxurious Chained-Brand Hotel
+# TBD
 
 ## Table of Contents
 
@@ -46,8 +46,8 @@ Results of our data analysis hinge on corresponding SQL analysis derived from th
 EDA involved exploring the commercial data to answer some key questions, including but not limited to:
 
 1. What are the top 10 highest-revenue countries and the top 10 countries with the highest-revenue-per-order up to date?
-2. Are there any seasonality
-3. 
+2. Is there any seasonality observed when it comes to the company's monthly number of sales?
+3. How many percent 
 4. 
 5. 
 
