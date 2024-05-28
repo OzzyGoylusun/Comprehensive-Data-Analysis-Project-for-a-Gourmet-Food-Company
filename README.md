@@ -13,7 +13,7 @@ This comprehensive data analysis project is designed to assist a gourmet food co
 
 <p align="center">
   <img src="https://github.com/OzzyGoylusun/PowerBI.Python.Northwindd/blob/main/Data%20Visuals/Logo.png"
- alt="Olist" width=300>
+ alt="Logo" width=300>
 </p>
 
 In this respect, the data analysis comprises of seven (7) different components, four of whose outcomes, described below, have been visualised by means of a Power BI dashboard with elegant design principles in mind:
@@ -25,12 +25,12 @@ In this respect, the data analysis comprises of seven (7) different components, 
 
 <p align="center">
   <img src="https://github.com/OzzyGoylusun/PowerBI.Python.Northwindd/blob/main/Data%20Visuals/1)%20Revenue%20Analysis.png"
- alt="Overall Sales Trend" width="750">
+ alt="Revenue Analysis" width="750">
 </p>
 
 <p align="center">
-  <img src=""
- alt="Overall Sales Trend" width="750">
+  <img src="https://github.com/OzzyGoylusun/PowerBI.Python.Northwindd/blob/main/Data%20Visuals/4)%20Order-Sales%20Analysis.png"
+ alt="Order-Sales Analysis" width="750">
 </p>
 
 The remaining three analyses, described below, have been visualised using a combination of Python's Matplotlib and Seaborn libraries:
@@ -41,7 +41,7 @@ The remaining three analyses, described below, have been visualised using a comb
 
 <p align="center">
   <img src="https://github.com/OzzyGoylusun/PowerBI.Python.Northwindd/blob/main/Data%20Visuals/3)%20Supplier%20Analysis.png"
- alt="Overall Sales Trend" width="750">
+ alt="Supplier Order Processing Performance Analysis" width="750">
 </p>
 
 ****
