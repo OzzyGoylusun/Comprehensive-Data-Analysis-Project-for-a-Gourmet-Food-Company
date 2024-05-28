@@ -29,7 +29,7 @@ In this respect, the data analysis comprises of seven (7) different components, 
 </p>
 
 <p align="center">
-  <img src="https://github.com/OzzyGoylusun/PowerBI.Python.Northwindd/blob/main/Data%20Visuals/2)%20Customer-RFM%20Analysis.png"
+  <img src=""
  alt="Overall Sales Trend" width="750">
 </p>
 
