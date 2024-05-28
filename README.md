@@ -71,7 +71,6 @@ WITH FILTER_FOR_IDENTIFICATION_OF_ORDERS_SUPPLIED_SINGLEHANDEDLY AS
 Afterwards, there turned out to be some suppliers who did not process a significant number of orders. To achieve statistical significance, I also needed to filter out all the suppliers whose order numbers remained below par, based on the resulting dataset's median value.
 
 ```sql
-...
 
 WITH FILTERED_SUPPLIER_AVERAGE_DELIVERY_SPEED_AND_ORDERS_PROCESSED AS
 	(
