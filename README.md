@@ -94,7 +94,9 @@ In the end, filtering out these suppliers as well resulted in a clearer dataset 
 
 The critical analysis results are summarised as follows:
 
-1. While the company has managed to 
+1. While **the US, Germany, Brazil and France** are among the top highest-revenue generating countries for the company, **Austria, Ireland
+
+
 ### Recommendations
 
 ### Limitations
