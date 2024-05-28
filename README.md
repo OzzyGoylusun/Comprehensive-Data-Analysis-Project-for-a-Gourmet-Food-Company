@@ -23,11 +23,26 @@ In this respect, the data analysis comprises of seven (7) different components, 
 * Customer Analysis (with an RFM component)
 * Product-Price Analysis
 
+<p align="center">
+  <img src="https://github.com/OzzyGoylusun/PowerBI.Python.Northwindd/blob/main/Data%20Visuals/1)%20Revenue%20Analysis.png"
+ alt="Overall Sales Trend" width="750">
+</p>
+
+<p align="center">
+  <img src="https://github.com/OzzyGoylusun/PowerBI.Python.Northwindd/blob/main/Data%20Visuals/2)%20Customer-RFM%20Analysis.png"
+ alt="Overall Sales Trend" width="750">
+</p>
+
 The remaining three analyses, described below, have been visualised using a combination of Python's Matplotlib and Seaborn libraries:
 
 * Supplier Analysis
 * Shipper Analysis
 * Inventory Optimisation Analysis
+
+<p align="center">
+  <img src="https://github.com/OzzyGoylusun/PowerBI.Python.Northwindd/blob/main/Data%20Visuals/3)%20Supplier%20Analysis.png"
+ alt="Overall Sales Trend" width="750">
+</p>
 
 ****
 
